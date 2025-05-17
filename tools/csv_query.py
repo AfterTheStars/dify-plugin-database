@@ -11,8 +11,10 @@ from dify_plugin.entities.tool import ToolInvokeMessage
 class CSVQueryTool(Tool):
     def _invoke(self, tool_parameters: dict[str, Any]) -> Generator[ToolInvokeMessage]:
         file = tool_parameters.get("file")
+        url  = tool_parameters.get("url")
         if file.extension != ".csv":
             raise ValueError("Only CSV files are supported.")
+        file.url=f"{url}{file.url}"
         query = tool_parameters.get("query")
         df = pd.read_csv(io.BytesIO(file.blob))
         engine = create_engine("sqlite:///csv.db")

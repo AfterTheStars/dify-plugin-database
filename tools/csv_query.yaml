@@ -31,6 +31,17 @@ parameters:
       zh_Hans: csv 文件。
     llm_description: The csv file.
     form: llm
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: csv url
+      zh_Hans: csv url
+    human_description:
+      en_US: The csv url.
+      zh_Hans: csv url
+    llm_description: The csv url.
+    form: llm
   - name: format
     type: select
     required: false
